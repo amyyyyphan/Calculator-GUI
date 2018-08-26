@@ -1,0 +1,144 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.ComponentOrientation;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.border.Border;
+
+public class Calculator {
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
+	JTextArea textArea = new JTextArea(2, 11);
+	
+	JButton clearButton = new JButton("C");
+	JButton divideButton = new JButton("/");
+	JButton multiplyButton = new JButton("x");
+	JButton subtractButton = new JButton("-");
+	JButton addButton = new JButton("+");
+	JButton equalButton = new JButton("=");
+	JButton dotButton = new JButton(".");
+	JButton button1 = new JButton("1");
+	JButton button2 = new JButton("2");
+	JButton button3 = new JButton("3");
+	JButton button4 = new JButton("4");
+	JButton button5 = new JButton("5");
+	JButton button6 = new JButton("6");
+	JButton button7 = new JButton("7");
+	JButton button8 = new JButton("8");
+	JButton button9 = new JButton("9");
+	JButton button0 = new JButton("0");
+	
+	Color topButtons = new Color(196, 200, 206);
+	Color numberButtons = new Color(225, 227, 232);
+	Color rightButtons = new Color(252, 151, 20);
+
+	public Calculator() {
+		frame.setSize(335, 535);
+		frame.setResizable(false);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.setTitle("Calculator");
+		
+		frame.add(panel);
+		panel.setBackground(Color.BLACK);
+		Border border = BorderFactory.createLineBorder(Color.GRAY, 4);
+		panel.setBorder(border);
+		
+		panel.setLayout(new FlowLayout(0, 0, 0));
+		
+		panel.add(textArea);
+		
+		textArea.setBackground(Color.BLACK);
+		Border textAreaBorder = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
+		
+		textArea.setBorder(textAreaBorder);
+		Font font = new Font("Arial", Font.BOLD, 33);
+		textArea.setFont(font);
+		textArea.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		textArea.setForeground(Color.WHITE);
+		textArea.setPreferredSize(new Dimension(2, 10));
+		textArea.setLineWrap(true);
+		
+		clearButton.setPreferredSize(new Dimension(240,80));
+		clearButton.setBackground(topButtons);
+		
+		
+		divideButton.setPreferredSize(new Dimension(80,80));
+		divideButton.setBackground(rightButtons);
+		
+		multiplyButton.setPreferredSize(new Dimension(80,80));
+		multiplyButton.setBackground(rightButtons);
+
+		subtractButton.setPreferredSize(new Dimension(80,80));
+		subtractButton.setBackground(rightButtons);
+
+		addButton.setPreferredSize(new Dimension(80,80));
+		addButton.setBackground(rightButtons);
+
+		equalButton.setPreferredSize(new Dimension(80,80));
+		equalButton.setBackground(rightButtons);
+
+		dotButton.setPreferredSize(new Dimension(80,80));
+		dotButton.setBackground(numberButtons);
+		
+		button1.setPreferredSize(new Dimension(80,80));
+		button1.setBackground(numberButtons);
+		
+		button2.setPreferredSize(new Dimension(80,80));
+		button2.setBackground(numberButtons);
+		
+		button3.setPreferredSize(new Dimension(80,80));
+		button3.setBackground(numberButtons);
+		
+		button4.setPreferredSize(new Dimension(80,80));
+		button4.setBackground(numberButtons);
+		
+		button5.setPreferredSize(new Dimension(80,80));
+		button5.setBackground(numberButtons);
+		
+		button6.setPreferredSize(new Dimension(80,80));
+		button6.setBackground(numberButtons);
+		
+		button7.setPreferredSize(new Dimension(80,80));
+		button7.setBackground(numberButtons);
+		
+		button8.setPreferredSize(new Dimension(80,80));
+		button8.setBackground(numberButtons);
+		
+		button9.setPreferredSize(new Dimension(80,80));
+		button9.setBackground(numberButtons);
+		
+		button0.setPreferredSize(new Dimension(160,80));
+		button0.setBackground(numberButtons);
+
+		panel.add(clearButton);
+		panel.add(divideButton);
+		
+		panel.add(button7);
+		panel.add(button8);
+		panel.add(button9);
+		panel.add(multiplyButton);
+		
+		panel.add(button4);
+		panel.add(button5);
+		panel.add(button6);
+		panel.add(subtractButton);
+		
+		panel.add(button1);
+		panel.add(button2);
+		panel.add(button3);		
+		panel.add(addButton);
+		
+		panel.add(button0);
+		panel.add(dotButton);
+		panel.add(equalButton);
+	}
+}
+

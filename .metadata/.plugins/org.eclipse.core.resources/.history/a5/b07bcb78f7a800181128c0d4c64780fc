@@ -1,0 +1,304 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.ComponentOrientation;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.border.Border;
+
+public class Calculator implements ActionListener{
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
+	JTextArea textArea = new JTextArea(2, 11);
+	
+	JButton clearButton = new JButton("C");
+	JButton divideButton = new JButton("/");
+	JButton multiplyButton = new JButton("x");
+	JButton subtractButton = new JButton("-");
+	JButton addButton = new JButton("+");
+	JButton equalButton = new JButton("=");
+	JButton dotButton = new JButton(".");
+	JButton button1 = new JButton("1");
+	JButton button2 = new JButton("2");
+	JButton button3 = new JButton("3");
+	JButton button4 = new JButton("4");
+	JButton button5 = new JButton("5");
+	JButton button6 = new JButton("6");
+	JButton button7 = new JButton("7");
+	JButton button8 = new JButton("8");
+	JButton button9 = new JButton("9");
+	JButton button0 = new JButton("0");
+	
+	double number1, number2, result;
+	
+	int addC = 0, multC = 0, divC = 0, subtC = 0;
+	
+	Color topButtons = new Color(196, 200, 206);
+	Color numberButtons = new Color(225, 227, 232);
+	Color rightButtons = new Color(252, 151, 20);
+	
+	Font buttonFont = new Font("Arial", Font.PLAIN, 35); 
+
+	public Calculator() {
+		frame.setSize(335, 530);
+		frame.setResizable(false);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.setTitle("Calculator");
+		
+		frame.add(panel);
+		panel.setBackground(Color.BLACK);
+		//Border border = BorderFactory.createLineBorder(Color.DARK_GRAY, 4);
+		//panel.setBorder(border);
+		
+		panel.setLayout(new FlowLayout(1, 0, 0));
+		
+		panel.add(textArea);
+		
+		textArea.setBackground(Color.BLACK);
+		Border textAreaBorder = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
+		
+		textArea.setBorder(textAreaBorder);
+		Font font = new Font("Arial", Font.BOLD, 33);
+		textArea.setFont(font);
+		textArea.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		textArea.setForeground(Color.WHITE);
+		textArea.setPreferredSize(new Dimension(2, 11));
+		textArea.setLineWrap(true);
+		
+		clearButton.setPreferredSize(new Dimension(240,80));
+		clearButton.setBackground(topButtons);
+		clearButton.setFont(buttonFont);
+		
+		
+		divideButton.setPreferredSize(new Dimension(80,80));
+		divideButton.setBackground(rightButtons);
+		divideButton.setFont(buttonFont);
+		divideButton.setForeground(Color.WHITE);
+		
+		multiplyButton.setPreferredSize(new Dimension(80,80));
+		multiplyButton.setBackground(rightButtons);
+		multiplyButton.setFont(buttonFont);
+		multiplyButton.setForeground(Color.WHITE);
+
+		subtractButton.setPreferredSize(new Dimension(80,80));
+		subtractButton.setBackground(rightButtons);
+		subtractButton.setFont(buttonFont);
+		subtractButton.setForeground(Color.WHITE);
+
+		addButton.setPreferredSize(new Dimension(80,80));
+		addButton.setBackground(rightButtons);
+		addButton.setFont(buttonFont);
+		addButton.setForeground(Color.WHITE);
+
+		equalButton.setPreferredSize(new Dimension(80,80));
+		equalButton.setBackground(rightButtons);
+		equalButton.setFont(buttonFont);
+		equalButton.setForeground(Color.WHITE);
+
+		dotButton.setPreferredSize(new Dimension(80,80));
+		dotButton.setBackground(numberButtons);
+		dotButton.setFont(buttonFont);
+		
+		button1.setPreferredSize(new Dimension(80,80));
+		button1.setBackground(numberButtons);
+		button1.setFont(buttonFont);
+		
+		button2.setPreferredSize(new Dimension(80,80));
+		button2.setBackground(numberButtons);
+		button2.setFont(buttonFont);
+		
+		button3.setPreferredSize(new Dimension(80,80));
+		button3.setBackground(numberButtons);
+		button3.setFont(buttonFont);
+		
+		button4.setPreferredSize(new Dimension(80,80));
+		button4.setBackground(numberButtons);
+		button4.setFont(buttonFont);
+		
+		button5.setPreferredSize(new Dimension(80,80));
+		button5.setBackground(numberButtons);
+		button5.setFont(buttonFont);
+		
+		button6.setPreferredSize(new Dimension(80,80));
+		button6.setBackground(numberButtons);
+		button6.setFont(buttonFont);
+		
+		button7.setPreferredSize(new Dimension(80,80));
+		button7.setBackground(numberButtons);
+		button7.setFont(buttonFont);
+		
+		button8.setPreferredSize(new Dimension(80,80));
+		button8.setBackground(numberButtons);
+		button8.setFont(buttonFont);
+		
+		button9.setPreferredSize(new Dimension(80,80));
+		button9.setBackground(numberButtons);
+		button9.setFont(buttonFont);
+		
+		button0.setPreferredSize(new Dimension(160,80));
+		button0.setBackground(numberButtons);
+		button0.setFont(buttonFont);
+
+		panel.add(clearButton);
+		panel.add(divideButton);
+		
+		panel.add(button7);
+		panel.add(button8);
+		panel.add(button9);
+		panel.add(multiplyButton);
+		
+		panel.add(button4);
+		panel.add(button5);
+		panel.add(button6);
+		panel.add(subtractButton);
+		
+		panel.add(button1);
+		panel.add(button2);
+		panel.add(button3);		
+		panel.add(addButton);
+		
+		panel.add(button0);
+		panel.add(dotButton);
+		panel.add(equalButton);
+		
+		button1.addActionListener(this);
+		button2.addActionListener(this);
+		button3.addActionListener(this);
+		button4.addActionListener(this);
+		button5.addActionListener(this);
+		button6.addActionListener(this);
+		button7.addActionListener(this);
+		button8.addActionListener(this);
+		button9.addActionListener(this);
+		button0.addActionListener(this);
+		clearButton.addActionListener(this);
+		divideButton.addActionListener(this);
+		multiplyButton.addActionListener(this);
+		subtractButton.addActionListener(this);
+		addButton.addActionListener(this);
+		dotButton.addActionListener(this);
+		equalButton.addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object source = e.getSource();
+		if(source == clearButton) {
+			number1 = 0;
+			number2 = 0;
+			textArea.setText("");
+		}
+		if(source == button1) {
+			textArea.append("1");
+		}
+		if(source == button2) {
+			textArea.append("2");
+		}
+		if(source == button3) {
+			textArea.append("3");
+		}
+		if(source == button3) {
+			textArea.append("3");
+		}
+		if(source == button4) {
+			textArea.append("4");
+		}
+		if(source == button5) {
+			textArea.append("5");
+		}
+		if(source == button6) {
+			textArea.append("6");
+		}
+		if(source == button7) {
+			textArea.append("7");
+		}
+		if(source == button8) {
+			textArea.append("8");
+		}
+		if(source == button9) {
+			textArea.append("9");
+		}
+		if(source == button0) {
+			textArea.append("0");
+		}
+		if(source == dotButton) {
+			textArea.append(".");
+		}
+		if(source == addButton) {
+			number1 = numberReader();
+			textArea.setText("");
+			addC = 1;
+			divC = 0;
+			multC = 0;
+			subtC = 0;
+		}
+		if(source == subtractButton) {
+			number1 = numberReader();
+			textArea.setText("");
+			addC = 0;
+			divC = 0;
+			multC = 0;
+			subtC = 1;
+		}
+		if(source == multiplyButton) {
+			number1 = numberReader();
+			textArea.setText("");
+			addC = 0;
+			divC = 0;
+			multC = 1;
+			subtC = 0;
+		}
+		if(source == divideButton) {
+			number1 = numberReader();
+			textArea.setText("");
+			addC = 0;
+			divC = 1;
+			multC = 0;
+			subtC = 0;
+		}
+		if(source == equalButton) {
+			if (number1 == 0){
+				textArea.setText("");
+			}
+			else {
+				number2 = numberReader();
+				
+				if(addC > 0) {
+					result = number1 + number2;
+					textArea.setText(Double.toString(result));
+				}
+				if(subtC > 0) {
+					result = number1 - number2;
+					textArea.setText(Double.toString(result));
+				}
+				if(multC > 0) {
+					result = number1 * number2;
+					textArea.setText(Double.toString(result));
+				}
+				if(divC > 0) {
+					result = number1 / number2;
+					textArea.setText(Double.toString(result));
+				}
+			}
+		}
+		}
+	}
+	
+	public double numberReader() {
+		double num1;
+		String s;
+		s = textArea.getText();
+		num1 = Double.valueOf(s);
+		return num1;
+	}
+}
+
