@@ -14,33 +14,32 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
-//Creates a simple Calculator
 public class Calculator implements ActionListener{
 	private JFrame frame;
 	private JPanel panel;
 	private JTextArea textArea;
 	
-	private JButton clearButton;
-	private JButton divideButton;
-	private JButton multiplyButton;
-	private JButton subtractButton;
-	private JButton addButton;
-	private JButton equalButton;
-	private JButton dotButton;
-	private JButton button1;
-	private JButton button2;
-	private JButton button3;
-	private JButton button4;
-	private JButton button5;
-	private JButton button6;
-	private JButton button7;
-	private JButton button8;
-	private JButton button9;
-	private JButton button0;
+	private JButton clearButton = new JButton("C");
+	private JButton divideButton = new JButton("/");
+	private JButton multiplyButton = new JButton("x");
+	private JButton subtractButton = new JButton("-");
+	private JButton addButton = new JButton("+");
+	private JButton equalButton = new JButton("=");
+	private JButton dotButton = new JButton(".");
+	private JButton button1 = new JButton("1");
+	private JButton button2 = new JButton("2");
+	private JButton button3 = new JButton("3");
+	private JButton button4 = new JButton("4");
+	private JButton button5 = new JButton("5");
+	private JButton button6 = new JButton("6");
+	private JButton button7 = new JButton("7");
+	private JButton button8 = new JButton("8");
+	private JButton button9 = new JButton("9");
+	private JButton button0 = new JButton("0");
 	
-	private double number1, number2, result;
+	double number1 = 0, number2 = 0, result = 0;
 	
-	private int addC = 0, multC = 0, divC = 0, subtC = 0;
+	int addC = 0, multC = 0, divC = 0, subtC = 0;
 	
 	Color topButtons = new Color(196, 200, 206);
 	Color numberButtons = new Color(225, 227, 232);
@@ -53,7 +52,7 @@ public class Calculator implements ActionListener{
 		JPanel panel = new JPanel();
 		textArea = new JTextArea(2, 11);
 		
-		frame.setSize(326, 524);
+		frame.setSize(335, 530);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
@@ -193,11 +192,6 @@ public class Calculator implements ActionListener{
 		panel.add(dotButton);
 		panel.add(equalButton);
 		
-		//Sets all values to 0
-		number1 = 0;
-		number2 = 0;
-		result = 0;
-		
 		button1.addActionListener(this);
 		button2.addActionListener(this);
 		button3.addActionListener(this);
@@ -228,7 +222,7 @@ public class Calculator implements ActionListener{
 		if(source == button1) {
 			textArea.append("1");
 		}
-		if(source == button2) {
+		else if(source == button2) {
 			textArea.append("2");
 		}
 		if(source == button3) {
